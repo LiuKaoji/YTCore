@@ -36,7 +36,6 @@ unzip -q -o "$FILENAME1" -d "YTCore/Library"
 # Extract the contents of the second file to the specified directory
 echo "Extracting contents of $FILENAME2 to /YTCore/Utility/YTVideoMuxer/DLMediaUtils"
 unzip -q -o "$FILENAME2" -d "/YTCore/Utility/YTVideoMuxer/DLMediaUtils"
-
 echo "Moving $FILENAME3 to YTCore/Resource/..."
 mv -f "$FILENAME3" "YTCore/Resource/"
 
