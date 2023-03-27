@@ -376,13 +376,13 @@
 			path = YYModel;
 			sourceTree = "<group>";
 		};
-		3693718C29BF699D00833591 /* YTReachability.h */ = {
+		3693718C29BF699D00833591 /* YTReachability */ = {
 			isa = PBXGroup;
 			children = (
 				36E0ABD929BEA2180025DB2F /* YTReachability.h */,
 				36E0ABDA29BEA2180025DB2F /* YTReachability.m */,
 			);
-			path = YTReachability.h;
+			path = YTReachability;
 			sourceTree = "<group>";
 		};
 		36E066BF29CDC44D00DB34CE /* Utility */ = {
@@ -391,7 +391,7 @@
 				36E066D829CDDCC800DB34CE /* YTVideoMuxer */,
 				36E066C029CDC51A00DB34CE /* YTDownloader */,
 				36E0AB9329BDBD540025DB2F /* YTFileManager */,
-				3693718C29BF699D00833591 /* YTReachability.h */,
+				3693718C29BF699D00833591 /* YTReachability */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
