@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Yzo-yD-WyM">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Nav Controller-->
+        <scene sceneID="8TX-51-Lb1">
+            <objects>
+                <navigationController storyboardIdentifier="YTNav" id="Yzo-yD-WyM" customClass="NavController" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X6v-cC-Lvp">
+                        <rect key="frame" x="0.0" y="47" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="VK4-Ma-dwc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLg-f1-03I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1293" y="-57"/>
+        </scene>
+        <!--Main Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cDX-eQ-A6K">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://www.youtube.com/watch?v=9kBHUMSSkF8" borderStyle="roundedRect" placeholder="请输入YT链接" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HMe-24-pZ5">
+                                <rect key="frame" x="30" y="111" width="265" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="MUk-HK-swY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="scrollableAxes" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1kb-kd-nGX" customClass="YTCLogView">
+                                <rect key="frame" x="30" y="226.33333333333331" width="315" height="551.66666666666674"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lO8-8P-1wb">
+                                <rect key="frame" x="303" y="110" width="42" height="34"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="1Mh-M9-Tuv"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="film.stack" catalog="system">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onClickParseVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ozm-2Y-tSY"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="atY-0Q-RDz">
+                                <rect key="frame" x="30" y="162" width="265" height="34.333333333333343"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVQ-qj-GtS">
+                                        <rect key="frame" x="0.0" y="0.0" width="58.666666666666664" height="34.333333333333336"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="network" catalog="system"/>
+                                        <connections>
+                                            <action selector="onClickBrowser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rY8-aT-Fu4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDH-vS-Pvx">
+                                        <rect key="frame" x="68.666666666666671" y="0.0" width="59" height="34.333333333333336"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="folder" catalog="system"/>
+                                        <connections>
+                                            <action selector="onClickFolder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L2r-he-WUD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="StK-0u-u1O">
+                                        <rect key="frame" x="137.66666666666666" y="0.0" width="58.666666666666657" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="point.topleft.down.curvedto.point.bottomright.up" catalog="system">
+                                            <color key="baseForegroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onClickConnection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vnI-dp-lyt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkK-8f-Slz">
+                                        <rect key="frame" x="206.33333333333334" y="0.0" width="58.666666666666657" height="34.333333333333336"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="icloud.and.arrow.down" catalog="system"/>
+                                        <connections>
+                                            <action selector="onClickUpdate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Dd-oa-caw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34.329999999999998" id="san-Fk-jhY"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aai-WB-pPC"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <constraints>
+                            <constraint firstItem="atY-0Q-RDz" firstAttribute="top" secondItem="HMe-24-pZ5" secondAttribute="bottom" constant="17" id="3CU-uD-byM"/>
+                            <constraint firstItem="1kb-kd-nGX" firstAttribute="leading" secondItem="aai-WB-pPC" secondAttribute="leading" constant="30" id="6l3-mT-CmG"/>
+                            <constraint firstItem="HMe-24-pZ5" firstAttribute="top" secondItem="aai-WB-pPC" secondAttribute="top" constant="20" id="A7M-I5-3hT"/>
+                            <constraint firstItem="1kb-kd-nGX" firstAttribute="top" secondItem="atY-0Q-RDz" secondAttribute="bottom" constant="30" id="J5C-Rd-wAn"/>
+                            <constraint firstItem="HMe-24-pZ5" firstAttribute="leading" secondItem="aai-WB-pPC" secondAttribute="leading" constant="30" id="LBw-BI-7uv"/>
+                            <constraint firstItem="aai-WB-pPC" firstAttribute="trailing" secondItem="atY-0Q-RDz" secondAttribute="trailing" constant="80" id="cr1-aj-gaL"/>
+                            <constraint firstItem="aai-WB-pPC" firstAttribute="bottom" secondItem="1kb-kd-nGX" secondAttribute="bottom" id="fv6-AJ-qfo"/>
+                            <constraint firstItem="lO8-8P-1wb" firstAttribute="top" secondItem="aai-WB-pPC" secondAttribute="top" constant="19" id="jHl-66-HbS"/>
+                            <constraint firstItem="aai-WB-pPC" firstAttribute="trailing" secondItem="HMe-24-pZ5" secondAttribute="trailing" constant="80" id="l2q-tA-4Re"/>
+                            <constraint firstItem="atY-0Q-RDz" firstAttribute="leading" secondItem="aai-WB-pPC" secondAttribute="leading" constant="30" id="pOn-jF-hqu"/>
+                            <constraint firstItem="lO8-8P-1wb" firstAttribute="leading" secondItem="HMe-24-pZ5" secondAttribute="trailing" constant="8" id="rdW-wV-yIM"/>
+                            <constraint firstItem="aai-WB-pPC" firstAttribute="trailing" secondItem="lO8-8P-1wb" secondAttribute="trailing" constant="30" id="y71-zT-pHP"/>
+                            <constraint firstItem="aai-WB-pPC" firstAttribute="trailing" secondItem="1kb-kd-nGX" secondAttribute="trailing" constant="30" id="zBh-K8-8pK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3HI-6o-Gqp"/>
+                    <connections>
+                        <outlet property="browserButton" destination="dVQ-qj-GtS" id="Cbt-aE-FGp"/>
+                        <outlet property="connectButton" destination="lO8-8P-1wb" id="9Ur-1O-qdh"/>
+                        <outlet property="folderButton" destination="mDH-vS-Pvx" id="w8G-Yp-fFl"/>
+                        <outlet property="logger" destination="1kb-kd-nGX" id="Mz5-za-YqK"/>
+                        <outlet property="parseButton" destination="lO8-8P-1wb" id="UY9-sk-d4o"/>
+                        <outlet property="textField" destination="HMe-24-pZ5" id="O1y-Rr-F5X"/>
+                        <outlet property="updateButton" destination="zkK-8f-Slz" id="ZTG-iS-LM7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-452" y="-57.635467980295566"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="film.stack" catalog="system" width="128" height="122"/>
+        <image name="folder" catalog="system" width="128" height="96"/>
+        <image name="icloud.and.arrow.down" catalog="system" width="128" height="111"/>
+        <image name="network" catalog="system" width="128" height="123"/>
+        <image name="point.topleft.down.curvedto.point.bottomright.up" catalog="system" width="119" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
