@@ -27,15 +27,16 @@
 		3600F02729CEF09900B52F8C /* YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3693717A29BED95200833591 /* YYModel.h */; };
 		3600F02829CEF09B00B52F8C /* NSObject+YYModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 3693717D29BED95200833591 /* NSObject+YYModel.h */; };
 		3600F02B29CEF0DB00B52F8C /* YTCoreDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E0AB9229BD957F0025DB2F /* YTCoreDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3600F02D29CEF0DF00B52F8C /* YTStatusInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E066CC29CDD59200DB34CE /* YTStatusInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3600F02E29CEF0E900B52F8C /* YTStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E066C829CDD0F500DB34CE /* YTStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3600F02F29CEF0EB00B52F8C /* YTCoreProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E066D029CDD5FD00DB34CE /* YTCoreProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3600F04229CEF49600B52F8C /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3600F03829CEF47600B52F8C /* ZipArchive.framework */; };
 		3600F04329CEF49600B52F8C /* ZipArchive.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3600F03829CEF47600B52F8C /* ZipArchive.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3600F04429CEF61B00B52F8C /* YTCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E0A8C929BD7FBA0025DB2F /* YTCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3600F04729CF16A000B52F8C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3600F04529CF16A000B52F8C /* AVFoundation.framework */; };
 		3600F04829CF16A000B52F8C /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3600F04629CF16A000B52F8C /* AVKit.framework */; };
 		3600F05529CFE1AB00B52F8C /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3600F05429CFE1AB00B52F8C /* VideoToolbox.framework */; };
+		36165A4B29D15A380041BFBB /* YTCoreProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 36165A4829D15A380041BFBB /* YTCoreProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36165A4C29D15A380041BFBB /* YTStatusInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 36165A4929D15A380041BFBB /* YTStatusInfo.m */; };
+		36165A4D29D15A380041BFBB /* YTStatusInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 36165A4A29D15A380041BFBB /* YTStatusInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		364AC96329C9EFB400461AF8 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 364AC96229C9EFB400461AF8 /* UIButton+BackgroundColor.m */; };
 		366240E329CAF90700DF4BB9 /* XZ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 366240DF29CAF90700DF4BB9 /* XZ.framework */; };
 		366240E429CAF90700DF4BB9 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 366240E029CAF90700DF4BB9 /* Python.framework */; };
@@ -61,7 +62,6 @@
 		3693719929BFFE8100833591 /* YTPannelTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693719729BFFE8100833591 /* YTPannelTable.m */; };
 		3693719E29C016C400833591 /* YTCornerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693719C29C016C400833591 /* YTCornerImageView.m */; };
 		369371A029C0369F00833591 /* YTCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3693719F29C0369F00833591 /* YTCore.bundle */; };
-		36E066CF29CDD59200DB34CE /* YTStatusInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E066CD29CDD59200DB34CE /* YTStatusInfo.m */; };
 		36E066FB29CE88D600DB34CE /* DLMediaUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E066F229CE887F00DB34CE /* DLMediaUtils.framework */; };
 		36E066FC29CE88D600DB34CE /* DLMediaUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36E066F229CE887F00DB34CE /* DLMediaUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		36E0A9CE29BD809D0025DB2F /* env.zip in Resources */ = {isa = PBXBuildFile; fileRef = 36E0A9CD29BD809D0025DB2F /* env.zip */; };
@@ -184,6 +184,9 @@
 		3600F04529CF16A000B52F8C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		3600F04629CF16A000B52F8C /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		3600F05429CFE1AB00B52F8C /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		36165A4829D15A380041BFBB /* YTCoreProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTCoreProtocol.h; sourceTree = "<group>"; };
+		36165A4929D15A380041BFBB /* YTStatusInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTStatusInfo.m; sourceTree = "<group>"; };
+		36165A4A29D15A380041BFBB /* YTStatusInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTStatusInfo.h; sourceTree = "<group>"; };
 		364AC96129C9EFB400461AF8 /* UIButton+BackgroundColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackgroundColor.h"; sourceTree = "<group>"; };
 		364AC96229C9EFB400461AF8 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
 		366240DF29CAF90700DF4BB9 /* XZ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XZ.framework; sourceTree = "<group>"; };
@@ -230,9 +233,6 @@
 		3693719C29C016C400833591 /* YTCornerImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTCornerImageView.m; sourceTree = "<group>"; };
 		3693719F29C0369F00833591 /* YTCore.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YTCore.bundle; sourceTree = "<group>"; };
 		36E066C829CDD0F500DB34CE /* YTStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTStatus.h; sourceTree = "<group>"; };
-		36E066CC29CDD59200DB34CE /* YTStatusInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YTStatusInfo.h; path = ../../../../../YTStatusInfo.h; sourceTree = "<group>"; };
-		36E066CD29CDD59200DB34CE /* YTStatusInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YTStatusInfo.m; path = ../../../../../YTStatusInfo.m; sourceTree = "<group>"; };
-		36E066D029CDD5FD00DB34CE /* YTCoreProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YTCoreProtocol.h; path = ../../../../../YTCoreProtocol.h; sourceTree = "<group>"; };
 		36E066ED29CE887F00DB34CE /* DLMediaUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = DLMediaUtils.xcodeproj; sourceTree = "<group>"; };
 		36E0A8C629BD7FBA0025DB2F /* YTCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YTCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36E0A8C929BD7FBA0025DB2F /* YTCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTCore.h; sourceTree = "<group>"; };
@@ -409,12 +409,12 @@
 			isa = PBXGroup;
 			children = (
 				36E0AB9229BD957F0025DB2F /* YTCoreDef.h */,
+				36165A4829D15A380041BFBB /* YTCoreProtocol.h */,
 				3693717429BED8EF00833591 /* YTParseInfo.h */,
 				3693718329BF029400833591 /* YTParseInfo.m */,
 				36E066C829CDD0F500DB34CE /* YTStatus.h */,
-				36E066CC29CDD59200DB34CE /* YTStatusInfo.h */,
-				36E066CD29CDD59200DB34CE /* YTStatusInfo.m */,
-				36E066D029CDD5FD00DB34CE /* YTCoreProtocol.h */,
+				36165A4A29D15A380041BFBB /* YTStatusInfo.h */,
+				36165A4929D15A380041BFBB /* YTStatusInfo.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -655,7 +655,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3600F04429CEF61B00B52F8C /* YTCore.h in Headers */,
+				36165A4B29D15A380041BFBB /* YTCoreProtocol.h in Headers */,
 				3600F01829CEF06500B52F8C /* YTReachability.h in Headers */,
+				36165A4D29D15A380041BFBB /* YTStatusInfo.h in Headers */,
 				3600F02B29CEF0DB00B52F8C /* YTCoreDef.h in Headers */,
 				3600F02229CEF08900B52F8C /* YTCoreUtility+env.h in Headers */,
 				3600F02529CEF09300B52F8C /* YTCoreUtility+update.h in Headers */,
@@ -663,8 +665,6 @@
 				3600F02329CEF08D00B52F8C /* YTCoreUtility+invoke.h in Headers */,
 				3600F02129CEF08400B52F8C /* YTCoreUtility+download.h in Headers */,
 				3600F02029CEF08100B52F8C /* YTCoreUtility.h in Headers */,
-				3600F02D29CEF0DF00B52F8C /* YTStatusInfo.h in Headers */,
-				3600F02F29CEF0EB00B52F8C /* YTCoreProtocol.h in Headers */,
 				3600F02E29CEF0E900B52F8C /* YTStatus.h in Headers */,
 				3600F01E29CEF07C00B52F8C /* YTCornerImageView.h in Headers */,
 				3600F01529CEF05B00B52F8C /* YTVideoMuxer.h in Headers */,
@@ -841,7 +841,6 @@
 				366D41CB29CEBBBB005A29B0 /* YTCoreUtility+env.mm in Sources */,
 				3693719929BFFE8100833591 /* YTPannelTable.m in Sources */,
 				3693718429BF029400833591 /* YTParseInfo.m in Sources */,
-				36E066CF29CDD59200DB34CE /* YTStatusInfo.m in Sources */,
 				36E0AB9929BDBF6B0025DB2F /* YTFileManager.m in Sources */,
 				366D41D429CED720005A29B0 /* YTReachability.m in Sources */,
 				366D41D029CEBBBB005A29B0 /* YTCoreUtility+parse.mm in Sources */,
@@ -853,6 +852,7 @@
 				366D41CE29CEBBBB005A29B0 /* YTCoreUtility+invoke.m in Sources */,
 				3693718129BED95200833591 /* YYClassInfo.m in Sources */,
 				36E0AB9E29BDDE170025DB2F /* YTVideo.m in Sources */,
+				36165A4C29D15A380041BFBB /* YTStatusInfo.m in Sources */,
 				3693718029BED95200833591 /* NSObject+YYModel.m in Sources */,
 				366D41D129CEBBBB005A29B0 /* YTCoreUtility+update.mm in Sources */,
 				3686AB0129C072F300D57CAD /* UIButton+Block.m in Sources */,
