@@ -28,12 +28,12 @@
     [self.utility checkConnection];
 }
 
-- (void)update {
+- (void)updateLibrary {
     [self.utility update];
 }
 
-- (void)parseVideoWithURLString:(NSString *)urlString {
-    [self.utility parseVideoWithURLString:urlString showPanel:YES];
+- (void)parseVideoWithURLString:(NSString *)urlString shouldShowPanel:(BOOL)showPanel{
+    [self.utility parseVideoWithURLString:urlString showPanel: showPanel];
 }
 
 #pragma mark - YTCoreDelegate
@@ -45,9 +45,10 @@
         case YTConnectionOK:
         case YTLibraryLatest:
         case YTParseVideoOk:
+        case YTProcess:
         case YTMediaDLOk:
-            if (self.onMessageEvent) {
-                self.onMessageEvent(info.description);
+            if (self.messageCallback) {
+                self.messageCallback(info.description, NO);
             }
             break;
             
@@ -58,28 +59,62 @@
         case YTParseVideoError:
         case YTMediaDLError:
         case YTMediaMergeError:
-            if (self.onMessageEvent) {
-                self.onMessageEvent(info.description);
+            if (self.messageCallback) {
+                self.messageCallback(info.description, YES);
             }
             break;
             
         case YTLibraryProgress:
         case YTMediaDLProgress:
+            if (self.messageCallback) {
+                self.messageCallback(info.description, NO);
+            }
+            break;
+            
         case YTOperation:
+            if (self.operationCallback) {
+                self.operationCallback(info.description);
+            }
             break;
     }
 }
 
 - (void)didParseList:(YTVideoListModel *)list {
-    if (self.onParseVideo) {
-        self.onParseVideo(list);
+    if (self.parseVideoCallback) {
+        self.parseVideoCallback(list);
+    }
+}
+
+-(void)didParseJSON:(NSString *_Nonnull)jsonStr{
+    if (self.parseJSONCallback) {
+        self.parseJSONCallback(jsonStr);
     }
 }
 
 - (void)didDownloadVideo:(NSURL *)fileURL {
-    if (self.onDownloadVideo) {
-        self.onDownloadVideo(fileURL);
+    if (self.downloadVideoCallback) {
+        self.downloadVideoCallback(fileURL);
     }
+}
+
+- (void)openMp4FileController:(UIViewController *)parentController{
+    NSError *error = nil;
+    NSURL *docDirURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:&error];
+    if (!error) {
+        MP4FileController *fileController = [[MP4FileController alloc] initWithDirectoryURL: docDirURL];
+        [parentController.navigationController pushViewController:fileController animated:YES];
+    }
+}
+
+- (void)openBrowser:(UIViewController *)parentController onURLChange:(URLBlock)urlHandle{
+    NSURL *ytURL = [NSURL URLWithString: @"https://m.youtube.com"];
+    WkWebBrowser *browser = [[WkWebBrowser alloc] initWithURL: ytURL];
+    browser.urlHandle = urlHandle;
+//    ^ (NSURL *webURL){
+//        self.textField.text = webURL.absoluteString;
+//        [self onClickParseVideo: nil];
+//    };
+    [parentController.navigationController pushViewController: browser animated:YES];
 }
 
 @end

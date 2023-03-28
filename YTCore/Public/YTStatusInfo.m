@@ -93,6 +93,9 @@
         case YTMediaMergeError:
             desc = @"合并媒体轨道失败";
             break;
+        case YTProcess:
+            desc = @"正在处理";
+            break;
     }
     return desc;
 }

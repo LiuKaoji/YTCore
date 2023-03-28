@@ -15,7 +15,7 @@
 		3600F01A29CEF06B00B52F8C /* YTPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 36E0AA3829BD85950025DB2F /* YTPanel.h */; };
 		3600F01B29CEF07200B52F8C /* YTPanelHead.h in Headers */ = {isa = PBXBuildFile; fileRef = 3693718E29BF821E00833591 /* YTPanelHead.h */; };
 		3600F01C29CEF07600B52F8C /* YTPanelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3693719229BFFCC400833591 /* YTPanelCell.h */; };
-		3600F01D29CEF07900B52F8C /* YTPannelTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 3693719629BFFE8100833591 /* YTPannelTable.h */; };
+		3600F01D29CEF07900B52F8C /* YTPanelTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 3693719629BFFE8100833591 /* YTPanelTable.h */; };
 		3600F01E29CEF07C00B52F8C /* YTCornerImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3693719B29C016C400833591 /* YTCornerImageView.h */; };
 		3600F01F29CEF07F00B52F8C /* UIButton+Block.h in Headers */ = {isa = PBXBuildFile; fileRef = 3686AAFE29C072F300D57CAD /* UIButton+Block.h */; };
 		3600F02029CEF08100B52F8C /* YTCoreUtility.h in Headers */ = {isa = PBXBuildFile; fileRef = 366D41C129CEBBBB005A29B0 /* YTCoreUtility.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +37,8 @@
 		36165A4B29D15A380041BFBB /* YTCoreProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 36165A4829D15A380041BFBB /* YTCoreProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36165A4C29D15A380041BFBB /* YTStatusInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 36165A4929D15A380041BFBB /* YTStatusInfo.m */; };
 		36165A4D29D15A380041BFBB /* YTStatusInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 36165A4A29D15A380041BFBB /* YTStatusInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		36165A5A29D1E6190041BFBB /* ErrorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 36165A5929D1E6190041BFBB /* ErrorTextField.m */; };
+		36165A6329D2758E0041BFBB /* MainViewModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 36165A6229D2758E0041BFBB /* MainViewModel.mm */; };
 		364AC96329C9EFB400461AF8 /* UIButton+BackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 364AC96229C9EFB400461AF8 /* UIButton+BackgroundColor.m */; };
 		366240E329CAF90700DF4BB9 /* XZ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 366240DF29CAF90700DF4BB9 /* XZ.framework */; };
 		366240E429CAF90700DF4BB9 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 366240E029CAF90700DF4BB9 /* Python.framework */; };
@@ -59,7 +61,7 @@
 		3693718429BF029400833591 /* YTParseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693718329BF029400833591 /* YTParseInfo.m */; };
 		3693719129BF821E00833591 /* YTPanelHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693718F29BF821E00833591 /* YTPanelHead.m */; };
 		3693719529BFFCC400833591 /* YTPanelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693719329BFFCC400833591 /* YTPanelCell.m */; };
-		3693719929BFFE8100833591 /* YTPannelTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693719729BFFE8100833591 /* YTPannelTable.m */; };
+		3693719929BFFE8100833591 /* YTPanelTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693719729BFFE8100833591 /* YTPanelTable.m */; };
 		3693719E29C016C400833591 /* YTCornerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3693719C29C016C400833591 /* YTCornerImageView.m */; };
 		369371A029C0369F00833591 /* YTCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3693719F29C0369F00833591 /* YTCore.bundle */; };
 		36E066FB29CE88D600DB34CE /* DLMediaUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36E066F229CE887F00DB34CE /* DLMediaUtils.framework */; };
@@ -187,6 +189,10 @@
 		36165A4829D15A380041BFBB /* YTCoreProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTCoreProtocol.h; sourceTree = "<group>"; };
 		36165A4929D15A380041BFBB /* YTStatusInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTStatusInfo.m; sourceTree = "<group>"; };
 		36165A4A29D15A380041BFBB /* YTStatusInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTStatusInfo.h; sourceTree = "<group>"; };
+		36165A5829D1E6190041BFBB /* ErrorTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ErrorTextField.h; sourceTree = "<group>"; };
+		36165A5929D1E6190041BFBB /* ErrorTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ErrorTextField.m; sourceTree = "<group>"; };
+		36165A6129D2758E0041BFBB /* MainViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewModel.h; sourceTree = "<group>"; };
+		36165A6229D2758E0041BFBB /* MainViewModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewModel.mm; sourceTree = "<group>"; };
 		364AC96129C9EFB400461AF8 /* UIButton+BackgroundColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+BackgroundColor.h"; sourceTree = "<group>"; };
 		364AC96229C9EFB400461AF8 /* UIButton+BackgroundColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BackgroundColor.m"; sourceTree = "<group>"; };
 		366240DF29CAF90700DF4BB9 /* XZ.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = XZ.framework; sourceTree = "<group>"; };
@@ -227,8 +233,8 @@
 		3693718F29BF821E00833591 /* YTPanelHead.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTPanelHead.m; sourceTree = "<group>"; };
 		3693719229BFFCC400833591 /* YTPanelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTPanelCell.h; sourceTree = "<group>"; };
 		3693719329BFFCC400833591 /* YTPanelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTPanelCell.m; sourceTree = "<group>"; };
-		3693719629BFFE8100833591 /* YTPannelTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTPannelTable.h; sourceTree = "<group>"; };
-		3693719729BFFE8100833591 /* YTPannelTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTPannelTable.m; sourceTree = "<group>"; };
+		3693719629BFFE8100833591 /* YTPanelTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTPanelTable.h; sourceTree = "<group>"; };
+		3693719729BFFE8100833591 /* YTPanelTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTPanelTable.m; sourceTree = "<group>"; };
 		3693719B29C016C400833591 /* YTCornerImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YTCornerImageView.h; sourceTree = "<group>"; };
 		3693719C29C016C400833591 /* YTCornerImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YTCornerImageView.m; sourceTree = "<group>"; };
 		3693719F29C0369F00833591 /* YTCore.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YTCore.bundle; sourceTree = "<group>"; };
@@ -350,18 +356,47 @@
 				36E0ABD629BEA19E0025DB2F /* YTCLogView.m */,
 				364AC96129C9EFB400461AF8 /* UIButton+BackgroundColor.h */,
 				364AC96229C9EFB400461AF8 /* UIButton+BackgroundColor.m */,
+				36165A5829D1E6190041BFBB /* ErrorTextField.h */,
+				36165A5929D1E6190041BFBB /* ErrorTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		3600F04C29CF549E00B52F8C /* Controllers */ = {
+		3600F04C29CF549E00B52F8C /* Moudule */ = {
+			isa = PBXGroup;
+			children = (
+				36165A6029D2753A0041BFBB /* Controller */,
+				36165A5F29D274EA0041BFBB /* Category */,
+			);
+			path = Moudule;
+			sourceTree = "<group>";
+		};
+		36165A5E29D274C50041BFBB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				36165A6129D2758E0041BFBB /* MainViewModel.h */,
+				36165A6229D2758E0041BFBB /* MainViewModel.mm */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36165A5F29D274EA0041BFBB /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				368E780429D09BDF0031BBF1 /* UIViewController+Alert.h */,
+				368E780529D09BDF0031BBF1 /* UIViewController+Alert.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		36165A6029D2753A0041BFBB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				36EC8C4029D00BF10075B5E0 /* Video */,
 				36EC8C3F29D00BE80075B5E0 /* Web */,
 				36EC8C3E29D00BB70075B5E0 /* Main */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		3693717829BED95200833591 /* YYModel */ = {
@@ -557,8 +592,8 @@
 				3693718F29BF821E00833591 /* YTPanelHead.m */,
 				3693719229BFFCC400833591 /* YTPanelCell.h */,
 				3693719329BFFCC400833591 /* YTPanelCell.m */,
-				3693719629BFFE8100833591 /* YTPannelTable.h */,
-				3693719729BFFE8100833591 /* YTPannelTable.m */,
+				3693719629BFFE8100833591 /* YTPanelTable.h */,
+				3693719729BFFE8100833591 /* YTPanelTable.m */,
 				3693719B29C016C400833591 /* YTCornerImageView.h */,
 				3693719C29C016C400833591 /* YTCornerImageView.m */,
 				3686AAFE29C072F300D57CAD /* UIButton+Block.h */,
@@ -606,8 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				3600F04A29CF548C00B52F8C /* Application */,
-				3600F04B29CF549400B52F8C /* View */,
-				3600F04C29CF549E00B52F8C /* Controllers */,
+				3600F04C29CF549E00B52F8C /* Moudule */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -615,8 +649,8 @@
 		36EC8C3E29D00BB70075B5E0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				368E780429D09BDF0031BBF1 /* UIViewController+Alert.h */,
-				368E780529D09BDF0031BBF1 /* UIViewController+Alert.m */,
+				3600F04B29CF549400B52F8C /* View */,
+				36165A5E29D274C50041BFBB /* ViewModel */,
 				36E0ABDC29BEA3620025DB2F /* MainController.h */,
 				36E0ABDD29BEA3620025DB2F /* MainController.mm */,
 				368E77FB29D0599A0031BBF1 /* NavController.h */,
@@ -674,7 +708,7 @@
 				3600F01929CEF06900B52F8C /* YTMediaDownloadView.h in Headers */,
 				3600F01B29CEF07200B52F8C /* YTPanelHead.h in Headers */,
 				3600F01C29CEF07600B52F8C /* YTPanelCell.h in Headers */,
-				3600F01D29CEF07900B52F8C /* YTPannelTable.h in Headers */,
+				3600F01D29CEF07900B52F8C /* YTPanelTable.h in Headers */,
 				3600F01F29CEF07F00B52F8C /* UIButton+Block.h in Headers */,
 				3600F02829CEF09B00B52F8C /* NSObject+YYModel.h in Headers */,
 				3600F02729CEF09900B52F8C /* YYModel.h in Headers */,
@@ -839,7 +873,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				366D41CB29CEBBBB005A29B0 /* YTCoreUtility+env.mm in Sources */,
-				3693719929BFFE8100833591 /* YTPannelTable.m in Sources */,
+				3693719929BFFE8100833591 /* YTPanelTable.m in Sources */,
 				3693718429BF029400833591 /* YTParseInfo.m in Sources */,
 				36E0AB9929BDBF6B0025DB2F /* YTFileManager.m in Sources */,
 				366D41D429CED720005A29B0 /* YTReachability.m in Sources */,
@@ -869,6 +903,8 @@
 			files = (
 				36EC8C3D29D0011F0075B5E0 /* WkWebBrowser.m in Sources */,
 				36E0ABA729BDE7420025DB2F /* AppDelegate.m in Sources */,
+				36165A6329D2758E0041BFBB /* MainViewModel.mm in Sources */,
+				36165A5A29D1E6190041BFBB /* ErrorTextField.m in Sources */,
 				36EC8C4329D01D030075B5E0 /* MP4FileController.m in Sources */,
 				368E780629D09BDF0031BBF1 /* UIViewController+Alert.m in Sources */,
 				36E0ABB829BDE7430025DB2F /* main.m in Sources */,

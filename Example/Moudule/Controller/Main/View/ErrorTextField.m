@@ -12,8 +12,20 @@
 - (instancetype)initWithCoder:(NSCoder *)coder{
     if(self = [super initWithCoder: coder]){
         self.delegate = self;
+        UIButton *clearButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
+        clearButton.imageView.contentMode = UIViewContentModeCenter;
+        [clearButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+        [clearButton addTarget:self action:@selector(clearTextField) forControlEvents:UIControlEventTouchUpInside];
+        self.rightView = clearButton;
+        self.rightViewMode = UITextFieldViewModeWhileEditing;
+        
+        self.placeholder = @"请输入youtube播放页链接";
     }
     return  self;
+}
+
+- (void)clearTextField {
+    self.text = @"";
 }
 
 - (void)showError:(NSString *)message {

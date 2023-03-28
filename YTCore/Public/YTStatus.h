@@ -35,5 +35,6 @@ typedef NS_ENUM(NSInteger, YTStatus) {
     YTMediaDLProgress,    // 下载进度
     YTMediaMergeError,    // 合并失败
     
-    YTOperation           // 操作提示
+    YTOperation,           // 操作提示
+    YTProcess,       // 处理过程
 };

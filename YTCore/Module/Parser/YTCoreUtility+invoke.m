@@ -10,7 +10,7 @@
 #import "YTStatusInfo.h"
 
 @implementation YTCoreUtility (invoke)
--(void)invokeMessage:(YTStatus)status reason:(NSString *)reason{
+-(void)invokeMessage:(YTStatus)status reason:(NSString *)reason,...{
     dispatch_async(MAIN_QUEUE, ^{
         if (self.delegate && [self.delegate respondsToSelector:@selector(onMessageEvent:)]){
             YTStatusInfo *info = [[YTStatusInfo alloc] initWithState:status];

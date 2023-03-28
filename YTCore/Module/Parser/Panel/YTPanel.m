@@ -6,7 +6,7 @@
 //
 
 #import "YTPanel.h"
-#import "YTPannelTable.h"
+#import "YTPanelTable.h"
 #import "YTPanelHead.h"
 
 @interface YTPanel()
@@ -15,7 +15,7 @@
 
 @implementation YTPanel
 {
-    YTPannelTable *_table;
+    YTPanelTable *_table;
 }
 - (instancetype)initWithFrame:(CGRect)frame list:(YTVideoListModel *)trackList {
     if (self = [super initWithFrame:frame]){
@@ -55,9 +55,9 @@
     _panelHead = [[YTPanelHead alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 100) imageURL:imageURL title:title subtitle:subTitle];
     [self.contentView addSubview:_panelHead];
     
-    // 创建 YTPannelTable
+    // 创建 YTPanelTable
     __weak typeof(self) weakSelf = self;
-    _table = [[YTPannelTable alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _table = [[YTPanelTable alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _table.trackCallback = ^(YTVideo * _Nonnull track){
         if(weakSelf.trackCallback){
             weakSelf.trackCallback(track);
@@ -105,7 +105,7 @@
 - (void)presentFromBottom {
     CGRect contentFrame = self.contentView.frame;
     contentFrame.origin.y = CGRectGetHeight(self.bounds) - CGRectGetHeight(contentFrame);
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.contentView.frame = contentFrame;
     }];
 }
@@ -113,7 +113,7 @@
 - (void)dismissToBottom {
     CGRect contentFrame = self.contentView.frame;
     contentFrame.origin.y = CGRectGetHeight(self.bounds);
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         self.contentView.frame = contentFrame;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];

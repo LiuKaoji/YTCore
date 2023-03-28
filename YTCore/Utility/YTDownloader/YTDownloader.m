@@ -11,6 +11,7 @@
 
 @implementation YTDownloader {
     NSURL *_dstURL;
+    NSInteger _retryCount;
 }
 
 - (instancetype)init {
@@ -23,6 +24,7 @@
 }
 
 - (void)startDownloadWithURL:(NSURL *)srcURL toDestination: (NSURL *)dstURL {
+    _retryCount = 3;//重试次数
     _dstURL = dstURL;
     NSURLSessionDownloadTask *downloadTask = [self.session downloadTaskWithURL: srcURL];
     [downloadTask resume];
@@ -68,12 +70,27 @@
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    [self.session invalidateAndCancel];
+    
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
+    
+    // 判断下载是否失败并且还有重试次数 而且http没有404 而且不是主动取消
+    if (error && _retryCount > 0 && httpResponse.statusCode != 404 && error.code != NSURLErrorCancelled) {
+        
+        // 重新创建一个下载任务
+        NSURLSessionDownloadTask *newTask = [session downloadTaskWithURL:task.currentRequest.URL];
+        
+        // 更新重试次数
+        _retryCount--;
+        
+        // 重新执行下载任务
+        [newTask resume];
+        return;
+    }
 
     if (error) {
         // 处理网络连接错误
         NSLog(@"下载失败：%@", error.localizedDescription);
-
+        
         // 主线程回调错误信息
         dispatch_async(MAIN_QUEUE, ^{
             if ([self.delegate respondsToSelector:@selector(didReceiveError:)]) {
@@ -83,12 +100,6 @@
                 self.errorBlock(error);
             }
         });
-    }
-
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)task.response;
-    if (httpResponse.statusCode == 404) {
-        // 处理文件不存在错误
-        NSLog(@"文件不存在");
     }
 }
 

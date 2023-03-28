@@ -243,15 +243,22 @@
 // 全局显示
 -(void)showInWindow{
     UIWindow *window = FIND_KEY_WINDOW;
-    [window addSubview: self];
-    NSLayoutConstraint *centerXConstraint = [self.centerXAnchor constraintEqualToAnchor:window.centerXAnchor];
-    NSLayoutConstraint *centerYConstraint = [self.centerYAnchor constraintEqualToAnchor:window.centerYAnchor];
+    
+    UIView *containView = [[UIView alloc] init];
+    containView.frame = window.frame;
+    containView.backgroundColor = [UIColor colorWithWhite:0 alpha: 0.5];
+    [window addSubview: containView];
+    
+    [containView addSubview: self];
+    
+    NSLayoutConstraint *centerXConstraint = [self.centerXAnchor constraintEqualToAnchor:containView.centerXAnchor];
+    NSLayoutConstraint *centerYConstraint = [self.centerYAnchor constraintEqualToAnchor:containView.centerYAnchor];
     
     CGFloat widthMultiplier = 0.8;
-    NSLayoutConstraint *widthConstraint = [self.widthAnchor constraintEqualToAnchor: window.widthAnchor multiplier:widthMultiplier];
+    NSLayoutConstraint *widthConstraint = [self.widthAnchor constraintEqualToAnchor: containView.widthAnchor multiplier:widthMultiplier];
     
     CGFloat aspectRatio = 4.0 / 3.0;
-    NSLayoutConstraint *aspectRatioConstraint = [self.heightAnchor constraintEqualToAnchor:window.widthAnchor multiplier:1.0 / aspectRatio];
+    NSLayoutConstraint *aspectRatioConstraint = [self.heightAnchor constraintEqualToAnchor:containView.widthAnchor multiplier:1.0 / aspectRatio];
     
     [NSLayoutConstraint activateConstraints:@[centerXConstraint, centerYConstraint, widthConstraint, aspectRatioConstraint]];
     
@@ -261,6 +268,7 @@
 
 // 隐藏
 -(void)dismissFromWindow{
+    [self.superview removeFromSuperview];
     [self removeFromSuperview];
     // 允许设备息屏
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];

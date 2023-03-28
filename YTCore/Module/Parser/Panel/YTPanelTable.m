@@ -1,5 +1,5 @@
 //
-//  YTPannelTable.m
+//  YTPanelTable.m
 //  YTCore
 //
 //  Created by kaoji on 3/14/23.
@@ -8,14 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "YTPanelHead.h"
 #import "YTPanelCell.h"
-#import "YTPannelTable.h"
+#import "YTPanelTable.h"
 #import "UIButton+Block.h"
 
-@interface YTPannelTable()<UITableViewDataSource, UITableViewDelegate>
+@interface YTPanelTable()<UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation YTPannelTable
+@implementation YTPanelTable
 {
     YTVideoListModel *_trackList;
 }

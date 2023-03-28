@@ -8,9 +8,9 @@
 #import <UIKit/UIKit.h>
 
 // 声明一个用于 URL 验证的 block 回调，参数为当前 URL 是否有效的 BOOL 类型值
-typedef BOOL (^YouTubeURLValidationBlock)(BOOL isValid);
+typedef void  (^YouTubeURLValidationBlock)(BOOL isValid);
 
-@interface ErrorTextField : UITextField
+@interface ErrorTextField : UITextField<UITextFieldDelegate>
 
 // 错误提示标签
 @property (nonatomic, strong) UILabel *errorLabel;

@@ -22,7 +22,7 @@
     if (self.isPythonReady) {
         return;
     }
-    [self invokeMessage:YTOperation reason:@"正在启动服务..."];
+    
     // 解压环境库
     dispatch_async(GLOBAL_QUEUE, ^{
         if ([self setupEnvironment]) {
@@ -34,13 +34,21 @@
 - (BOOL)setupEnvironment {
     NSString *envPath = [YTFileManager getYTCoreBundleFile:@"env.zip"];
     NSString *exactPath = [DOC_PATH stringByAppendingPathComponent:@"Python.framework"];
-
-
-    BOOL libExist = [YTFileManager fileExistsAtPath:exactPath];
+    
+    // 检查环境库是否已经解压到指定目录
+    NSString *checkEnvStr = [NSString stringWithFormat:@"正在检查环境库: %@", exactPath];
+    [self invokeMessage:YTProcess reason: checkEnvStr];
+    BOOL libExist = [YTFileManager directoryExistsAtPath: exactPath];
+    
+    //检查结果
+    NSString *checkResult = [NSString stringWithFormat:@"环境库%@", libExist ?@"已存在":@"不存在, 正在解压..."];
+    [self invokeMessage:YTProcess reason: checkResult];
+    
+    // 检查是否需要解压
     BOOL isExact = (libExist) ? YES : ([SSZipArchive unzipFileAtPath:envPath toDestination:DOC_PATH]);
 
     if (!(isExact || libExist)) {
-        [self invokeMessage:YTInitError reason:@"环境文件操作异常!"];
+        [self invokeMessage:YTInitError reason:@"环境库解压异常"];
         return NO;
     }
     return YES;
@@ -58,9 +66,12 @@
     PyEval_InitThreads();
 
     if (!Py_IsInitialized()) {
-        [self invokeMessage:YTInitError reason:@"Python初始化失败!"];
+        [self invokeMessage:YTInitError reason:@"Python初始化失败"];
         return;
     }
+    
+    NSString *homeDir = [NSString stringWithFormat:@"设置PYTHONHOME: %@", resDir];
+    [self invokeMessage:YTProcess reason: homeDir];
     
     // 设置禁止生成.pyc文件
     putenv("PYTHONDONTWRITEBYTECODE=1");
@@ -78,13 +89,13 @@
     NSLog(@"PYTHON HOME: %@", resDir);
     self.isPythonReady = YES;
     
-    [self invokeMessage:YTInitOk reason:@"服务已启动!"];
+    [self invokeMessage:YTInitOk reason:@"Python已初始化!"];
 }
 
 -(void)destroy{
     _PyEval_FiniThreads();
     Py_Finalize();
-    [self invokeMessage: YTDeinitOk reason: @"已关闭服务"];
+    [self invokeMessage: YTDeinitOk reason: @"Python已销毁!"];
 }
 
 @end

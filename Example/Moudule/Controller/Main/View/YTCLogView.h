@@ -11,6 +11,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, DebugLevel) {
+    DebugLevelD, // Debug
+    DebugLevelW, // Warning
+    DebugLevelE  // Error
+};
+
 @interface YTCLogView : UITextView
 - (void)d:(NSString *)msg;
 - (void)w:(NSString *)msg;

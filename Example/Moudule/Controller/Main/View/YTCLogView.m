@@ -36,34 +36,45 @@
     
 }
 
-- (void)logMessage:(NSString *)message withLevel:(NSString *)level color:(UIColor *)color {
+- (void)logMessage:(NSString *)message withLevel:(DebugLevel)level color:(UIColor *)color {
     if (!message) {
         return;
     }
-    //NSString *date = [_dateFormatter stringFromDate:[NSDate date]];
-    NSString *log = [NSString stringWithFormat:@"%@%@", level,message];
+    
+    NSString *levelStr = nil;
+    switch (level) {
+        case DebugLevelD:
+            levelStr = @"[D]";
+        case DebugLevelW:
+            levelStr = @"[W]";
+        case DebugLevelE:
+            levelStr = @"[E]";
+        default:
+            levelStr = @"";
+    }
+    NSString *log = [NSString stringWithFormat:@"%@%@", levelStr, message];
     
 
 
     NSMutableAttributedString *attributedLog = [[NSMutableAttributedString alloc] initWithString:log attributes: _attributes];
-    [attributedLog addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, level.length)];
+    [attributedLog addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, log.length)];
     [attributedLog appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n"]];
     [self appendAttributedText:attributedLog];
 }
 
 - (void)d:(NSString *)msg {
     UIColor *dColor = [UIColor colorWithRed:47/255.0 green:47/255.0 blue:47/255.0 alpha:1.0];
-    [self logMessage:msg withLevel:@"[D]" color:dColor];
+    [self logMessage:msg withLevel:DebugLevelD color:dColor];
 }
 
 - (void)w:(NSString *)msg {
     UIColor *wColor = [UIColor colorWithRed:238/255.0 green:177/255.0 blue:59/255.0 alpha:1.0];
-    [self logMessage:msg withLevel:@"[W]" color:wColor];
+    [self logMessage:msg withLevel:DebugLevelW color:wColor];
 }
 
 - (void)e:(NSString *)msg {
     UIColor *eColor = [UIColor colorWithRed:197/255.0 green:70/255.0 blue:47/255.0 alpha:1.0];
-    [self logMessage:msg withLevel:@"[E]" color:eColor];
+    [self logMessage:msg withLevel:DebugLevelE color:eColor];
 }
 
 - (void)appendAttributedText:(NSAttributedString *)attributedText {

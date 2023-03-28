@@ -99,7 +99,9 @@
     int count = self.downloadModel.pureVideo ?1:3;
     [self.downloadView  setProgressCount: count];
     
-    [self.downloadView showInWindow];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.downloadView showInWindow];
+    });
     
     __weak typeof(self) weakSelf = self;
     [self.downloadView.cancelButton addActionHandler:^(NSInteger tag) {
@@ -117,6 +119,7 @@
     // 是纯视频且视频已经下载完成
     if (self.isVideoDownloaded && self.downloadModel.pureVideo){
         // 回调视频
+        [self invokeMessage: YTProcess reason: [NSString stringWithFormat:@"正在移动: \n%@ 视频文件至: %@",self.muxModel.videoPath, self.muxModel.outputPath]];
         __weak typeof(self) weakSelf = self;
         [YTFileManager moveFileFrom: self.muxModel.videoPath to:self.muxModel.outputPath completion:^(BOOL success, NSError * _Nonnull error) {
             if(error){
@@ -135,7 +138,7 @@
     if (self.isVideoDownloaded && !self.isAudioDownloaded){
         [self startDownloadAudio];
     }
-   
+    
     // 下载了视频和音频
     if (self.isVideoDownloaded && self.isAudioDownloaded){
         [self startMuxMedias];// 开始混合并回调视频合并结果
@@ -151,6 +154,7 @@
     self.downloader.delegate = self;
     [self.downloader startDownloadWithURL: videoURL toDestination: dstURL];
     
+    [self invokeMessage: YTProcess reason: [NSString stringWithFormat:@"正在从: \n%@ \n下载视频文件至: \n%@",videoURL, dstURL]];
 }
 
 // 下载音频
@@ -162,6 +166,8 @@
     self.downloader = [[YTDownloader alloc] init];
     self.downloader.delegate = self;
     [self.downloader startDownloadWithURL: audioURL toDestination: dstURL];
+    
+    [self invokeMessage: YTProcess reason: [NSString stringWithFormat:@"正在从: \n%@ \n 下载音频文件至: %@",audioURL, dstURL]];
 }
 
 -(void)didReceiveError:(NSError *)error{
@@ -198,6 +204,8 @@
 
 
 -(void)startMuxMedias{
+    
+    [self invokeMessage: YTProcess reason: [NSString stringWithFormat:@"正在合并音视频: \n视频源: %@ \n音频源: %@ \n输出路径: %@",self.muxModel.videoPath, self.muxModel.audioPath, self.muxModel.outputPath]];
     
     YTVideoMuxer *muxer = [[YTVideoMuxer alloc] init];
     __weak typeof(self) weakSelf = self;

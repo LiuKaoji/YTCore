@@ -23,6 +23,10 @@
     self = [super init];
     if (self) {
         self.initialURL = url;
+        // 禁止侧滑返回手势
+        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        }
     }
     return self;
 }
@@ -41,6 +45,7 @@
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
     
     self.webView.navigationDelegate = self;
+    self.webView.allowsBackForwardNavigationGestures = YES;
     self.webView.scrollView.contentInset = UIEdgeInsetsMake(safeAreaTop, 0, 0, 0);
     [self.view addSubview:self.webView];
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -50,7 +55,7 @@
     UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"back"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(leftBarButtonTapped)];
     self.navigationItem.leftBarButtonItem = leftButtonItem;
     
-    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"more"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonTapped)];
+    UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"download"] imageWithRenderingMode: UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(rightBarButtonTapped)];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     
     // Create the progress view
@@ -97,45 +102,18 @@
 }
 
 -(void)rightBarButtonTapped{
-    [self showActionSheet: nil];
+    [self downloadVideo: nil];
 }
 
-- (void)showActionSheet:(id)sender {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    
-    UIAlertAction *goBackAction = [UIAlertAction actionWithTitle:@"前进" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self goBack];
-    }];
-    
-    UIAlertAction *goForwardAction = [UIAlertAction actionWithTitle:@"后退" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self goForward];
-    }];
-    
-    UIAlertAction *refreshAction = [UIAlertAction actionWithTitle:@"刷新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self refresh];
-    }];
-    
-    UIAlertAction *downloadAction = [UIAlertAction actionWithTitle:@"下载" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        if([self getYouTubeURLFromVideoKey: self.webView.URL.absoluteString]){
-            if(self.urlHandle){
-                self.urlHandle(self.webView.URL);
-                [self.navigationController popViewControllerAnimated: YES];
-            }
-        }else{
-            [self showMessage:@"网址错误" message: @"当前网址非youtube播放页面"];
+- (void)downloadVideo:(id)sender {
+    if([self getYouTubeURLFromVideoKey: self.webView.URL.absoluteString]){
+        if(self.urlHandle){
+            self.urlHandle(self.webView.URL);
+            [self.navigationController popViewControllerAnimated: YES];
         }
-    }];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    
-    [alertController addAction:goBackAction];
-    [alertController addAction:goForwardAction];
-    [alertController addAction:refreshAction];
-    [alertController addAction:downloadAction];
-    [alertController addAction:cancelAction];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
+    }else{
+        [self showMessage:@"网址错误" message: @"当前非youtube播放页面"];
+    }
 }
 
 // 拼合网址 可以避免传入列表网址 耗时过长
@@ -205,6 +183,10 @@
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
     [self.progressView setProgress:self.webView.estimatedProgress animated:YES];
+}
+
+- (BOOL)webView:(WKWebView *)webView shouldAllowDeprecatedTLS:(BOOL)deprecatedTLS {
+    return YES;
 }
 
 @end
