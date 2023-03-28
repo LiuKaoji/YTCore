@@ -8,7 +8,7 @@
 #import "MainController.h"
 #import "MainViewModel.h"
 
-#define SHOULD_SHOW_PANEL YES//是否显示下载弹窗面板
+#define SHOULD_SHOW_PANEL YES //是否显示下载弹窗面板
 
 @interface MainController ()
 @property (nonatomic, strong) MainViewModel *viewModel;
@@ -27,21 +27,22 @@ static MainController *shared = nil;
     [self bindViewModel];
 }
 
+// 绑定视图模型
 -(void)bindViewModel{
     self.viewModel = [[MainViewModel alloc] init];
     [self.viewModel startService];
     [self.viewModel checkConnection];
     
-    // retain cycle
+    // 防止循环引用
     __weak typeof(self) weakSelf = self;
     
-    // 当前正在进行什么操作
+    // 当前正在进行的操作
     self.viewModel.operationCallback = ^(NSString * _Nonnull operation){
         LOG_D(operation);
         weakSelf.operationLabel.text = operation;
     };
     
-    // 输出到控制台显示
+    // 控制台显示消息
     self.viewModel.messageCallback = ^(NSString * _Nonnull message, BOOL isError){
         isError ?LOG_E(message):LOG_D(message);
     };
@@ -70,6 +71,7 @@ static MainController *shared = nil;
 }
 
 #pragma mark - UI点击事件
+
 // 更新依赖库
 - (IBAction)onClickUpdate:(id)sender {
     // 更新按钮点击事件
@@ -80,19 +82,16 @@ static MainController *shared = nil;
 
 // 解析输入的视频连接
 - (IBAction)onClickParseVideo:(id)sender {
-    
-    //https://www.youtube.com/watch?v=9kBHUMSSkF8 30s Apple广告
-    //https://www.youtube.com/watch?v=0QRVXnZkr1Y 几分钟演唱会歌曲
     NSString *urlStr = self.textField.text;
     [self.viewModel parseVideoWithURLString: urlStr shouldShowPanel: SHOULD_SHOW_PANEL];
 }
 
-// 点击查看已下载文件夹
+// 查看已下载文件夹
 - (IBAction)onClickFolder:(id)sender {
     [self.viewModel openMp4FileController: self];
 }
 
-// 点击跳转浏览器选取下载链接
+// 跳转浏览器选取下载链接
 - (IBAction)onClickBrowser:(id)sender {
     [self.viewModel openBrowser: self onURLChange:^(NSURL *webURL) {
         self.textField.text = webURL.absoluteString;
@@ -115,6 +114,7 @@ static MainController *shared = nil;
     return self;
 }
 
+// 锁定按钮
 -(void)lockButtons{
     dispatch_async(MAIN_QUEUE, ^{
         self.updateButton.enabled = NO;
@@ -124,6 +124,7 @@ static MainController *shared = nil;
     });
 }
 
+// 解锁按钮
 -(void)unlockButtons {
     dispatch_async(MAIN_QUEUE, ^{
         self.updateButton.enabled = YES;
@@ -133,6 +134,7 @@ static MainController *shared = nil;
     });
 }
 
+// 点击空白区域隐藏键盘
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing: YES];
 }
