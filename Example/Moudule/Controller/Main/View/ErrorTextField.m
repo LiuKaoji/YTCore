@@ -6,6 +6,7 @@
 //
 
 #import "ErrorTextField.h"
+#import "NSString+Youtube.h"
 
 @implementation ErrorTextField
 
@@ -48,7 +49,7 @@
     if ([host isEqualToString:@"www.youtube.com"] || [host isEqualToString:@"youtube.com"]) {
         NSString *path = url.path;
         NSArray *pathComponents = [path componentsSeparatedByString:@"/"];
-        NSString *videoKey = [self getYouTubeVideoKeyFromURL: url.path];
+        NSString *videoKey = [NSString getYouTubeVideoKeyFromURL: url.path];
         if (pathComponents.count > 1 && [pathComponents[1] isEqualToString:@"watch"]) {
             if (!videoKey || [videoKey isEqualToString:@""] || videoKey.length < 10) {
                 return NO;
@@ -75,24 +76,6 @@
     }
 }
 
-// 从YT网址中提取videoId
-- (NSString *)getYouTubeVideoKeyFromURL:(NSString *)urlString {
-    NSError *error = NULL;
-    
-    // 创建正则表达式
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<=watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*" options:NSRegularExpressionCaseInsensitive error:&error];
-    
-    // 匹配视频 key
-    NSTextCheckingResult *match = [regex firstMatchInString:urlString options:0 range:NSMakeRange(0, [urlString length])];
-    
-    // 返回视频 key
-    if (match) {
-        NSString *videoKey = [urlString substringWithRange:match.range];
-        return videoKey;
-    } else {
-        return nil;
-    }
-}
 - (void)layoutSubviews{
     [super layoutSubviews];
     if(self.errorLabel){

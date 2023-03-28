@@ -7,15 +7,16 @@
 
 #import "YTCoreUtility+parse.h"
 #import "YTCoreUtility+invoke.h"
+#import "YTCoreUtility+download.h"
 #import "YTPanel.h"
 #import "YTReachability.h"
 #import "YTCoreDef.h"
 #import <Python/Python.h>
-#import "YTCoreUtility+download.h"
 #import "YTCoreDef.h"
 #import "YTCoreUtility+env.h"
 #import "YTFileManager.h"
 #import <objc/runtime.h>
+#import "NSString+Youtube.h"
 
 @implementation YTCoreUtility (parse)
 @dynamic lockParser;
@@ -69,7 +70,7 @@
 -(YTVideoListModel *)parseVideo:(NSString *)videoURL{
     
     // 标准化下载地址
-    NSString *parseURL = [self getYouTubeVideoKeyFromURL: videoURL];
+    NSString *parseURL = [NSString getYouTubeVideoKeyFromURL: videoURL];
     if (parseURL == nil) {
         return nil;
     }
@@ -107,34 +108,6 @@
     }
     [self invokeMessage: YTParseVideoError reason: parseJSONStr];
     return nil;
-}
-
-// 拼合网址 可以避免传入列表网址 耗时过长
-- (NSString *)getYouTubeURLFromVideoKey:(NSString *)videoKey {
-    if (!videoKey || [videoKey isEqualToString:@""]) {
-        return nil;
-    }
-    
-    return [NSString stringWithFormat:@"https://www.youtube.com/watch?v=%@", videoKey];
-}
-
-// 从YT网址中提取videoId
-- (NSString *)getYouTubeVideoKeyFromURL:(NSString *)urlString {
-    NSError *error = NULL;
-    
-    // 创建正则表达式
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<=watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*" options:NSRegularExpressionCaseInsensitive error:&error];
-    
-    // 匹配视频 key
-    NSTextCheckingResult *match = [regex firstMatchInString:urlString options:0 range:NSMakeRange(0, [urlString length])];
-    
-    // 返回视频 key
-    if (match) {
-        NSString *videoKey = [urlString substringWithRange:match.range];
-        return [self getYouTubeURLFromVideoKey:videoKey];
-    } else {
-        return nil;
-    }
 }
 
 - (PyObject *)loadYTLibrary {

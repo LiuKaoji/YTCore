@@ -8,6 +8,7 @@
 #import "WkWebBrowser.h"
 #import <WebKit/WebKit.h>
 #import "UIViewController+Alert.h"
+#import "NSString+Youtube.h"
 
 @interface WkWebBrowser () <WKNavigationDelegate>
 @property (nonatomic, strong) NSURL *initialURL;
@@ -106,32 +107,13 @@
 }
 
 - (void)downloadVideo:(id)sender {
-    if([self getYouTubeVideoKeyFromURL: self.webView.URL.absoluteString]){
+    if([NSString getYouTubeVideoKeyFromURL: self.webView.URL.absoluteString]){
         if(self.urlHandle){
             self.urlHandle(self.webView.URL);
             [self.navigationController popViewControllerAnimated: YES];
         }
     }else{
         [self showMessage:@"网址错误" message: @"当前非youtube播放页面"];
-    }
-}
-
-// 判断是否播放页面
-- (NSString *)getYouTubeVideoKeyFromURL:(NSString *)urlString {
-    NSError *error = NULL;
-    
-    // 创建正则表达式
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<=watch\\?v=|/videos/|embed\\/)[^#\\&\\?]*" options:NSRegularExpressionCaseInsensitive error:&error];
-    
-    // 匹配视频 key
-    NSTextCheckingResult *match = [regex firstMatchInString:urlString options:0 range:NSMakeRange(0, [urlString length])];
-    
-    // 返回视频 key
-    if (match) {
-        NSString *videoKey = [urlString substringWithRange:match.range];
-        return [self getYouTubeURLFromVideoKey:videoKey];
-    } else {
-        return nil;
     }
 }
 
