@@ -21,18 +21,8 @@ static MainController *shared = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //代理
-    [self setupUI];
-    
     self.utility = [[YTCoreUtility alloc] init];
     self.utility.delegate = self;
-    
-    LOG_D(@"============温馨提示========");
-    LOG_D(@"本程序基于Python版本youtube_dl");
-    LOG_D(@"通过解析油管网站播放页URL获得视频");
-    LOG_D(@"若多次解析失败建议点击更新依赖库");
-    LOG_D(@">>>> 本工具不含梯子 >>>");
-    LOG_D(@"=========================");
 
     [self startService];
     [self onClickConnection: nil];
@@ -172,16 +162,6 @@ static MainController *shared = nil;
     self = shared;
     return self;
 }
-
-//==========初始化及UI处理================
--(void)setupUI{
-    // 渐变背景
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.view.frame;
-    gradientLayer.colors = @[(__bridge id)[UIColor colorWithRed:0.2 green:0.4 blue:0.8 alpha:1.0].CGColor, (__bridge id)[UIColor colorWithRed:0.8 green:0.4 blue:0.2 alpha:1.0].CGColor];
-    [self.view.layer insertSublayer:gradientLayer atIndex:0];
-}
-
 
 -(void)lockButtons{
     dispatch_async(MAIN_QUEUE, ^{
