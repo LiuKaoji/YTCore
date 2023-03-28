@@ -1,5 +1,9 @@
 # YTCore
-YTCore 是一个用于iOS平台处理 YouTube 视频解析、下载功能的 iOS 框架。
+YTCore
+
+ 是一个用于iOS平台处理 YouTube 视频解析、下载功能的 iOS 框架。
+ 
+ https://user-images.githubusercontent.com/47659827/228126032-e9a94a56-20ac-42f5-b288-bfb6f8dc75d4.mp4
 
 ```mermaid
 graph LR
